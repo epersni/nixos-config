@@ -1,11 +1,12 @@
-{ config, pkgs, ... }:
+{ config, ... }:
 
 {
+  imports = [ 
+      ../common/bash.nix
+  ];
   home.username = "nicklas";
   home.homeDirectory = "/home/nicklas";
   home.stateVersion = "24.05";
-  home.packages = with pkgs; [
-  ];
   xsession.enable = true;
   xsession.windowManager.xmonad = {
     enable = true;
@@ -135,24 +136,6 @@
           highlight link TabNum Special
       endif
     '';
-    ".bashrc".text = ''
-      alias ll='ls -alh --color --group-directories-first'
-      alias ncopy='xclip -selection clipboard'
-      alias npaste='xclip -selection clipboard -o'
-      alias prettyjson='python -m json.tool'
-      if [ -f /etc/bashrc ]; then
-              . /etc/bashrc
-      fi
-      # Do not record duplicates in command history
-      export HISTCONTROL=ignoreboth:erasedups
-    '';
-    ".gitconfig".text = ''
-      [user]
-        name = nicklas
-        email = nicklas.m.persson@gmail.com
-      [core]
-        editor = vim 
-    '';
     ".screenrc".text = ''
           caption always # activates window caption
       caption string '%{= wk}[ %{k}%H %{k}][%= %{= wk}%?%-Lw%?%{r}(%{r}%n*%f%t%?(%u)%?%{r})%{k}%?%+Lw%?%?%= %{k}][%{b} %d/%m %{k}%c %{k}]' # good looking window bar 
@@ -207,8 +190,5 @@
     '';
   };
 
-  home.sessionVariables = {
-    MANWIDTH = 80;
-  };
   programs.home-manager.enable = true;
 }
