@@ -3,6 +3,7 @@
 {
   imports = [ 
       ../common/bash.nix
+      ../common/git.nix
       ../common/xresources.nix
   ];
   home.username = "nicklas";
