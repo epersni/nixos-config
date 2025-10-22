@@ -3,7 +3,7 @@
 {
   home.username = "nicklas";
   home.homeDirectory = "/home/nicklas";
-  home.stateVersion = "24.11";
+  home.stateVersion = "24.05";
   home.packages = with pkgs; [
   ];
   xsession.enable = true;

@@ -13,7 +13,6 @@
     pkgs = import nixpkgs { inherit system; };
   in
   {
-    # NixOS system configuration
     nixosConfigurations = {
       desktop = nixpkgs.lib.nixosSystem {
         inherit system;
@@ -24,14 +23,11 @@
       };
     };
 
-    # Home Manager configuration
     homeConfigurations = {
       "nicklas@desktop" = home-manager.lib.homeManagerConfiguration {
         pkgs = pkgs;
-
-        # Wrap home.nix in a function to ensure correct evaluation in flakes
         modules = [
-          ({ pkgs, ... }: import ./home/nicklas/home.nix)
+          (import ./home/nicklas/home.nix)
         ];
       };
     };
