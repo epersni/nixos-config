@@ -8,28 +8,28 @@
   };
 
   outputs = { self, nixpkgs, home-manager, ... }:
-  let
-    system = "x86_64-linux";
-    pkgs = import nixpkgs { inherit system; };
-  in
-  {
-    nixosConfigurations = {
-      desktop = nixpkgs.lib.nixosSystem {
-        inherit system;
-        modules = [
-          ./hosts/desktop/configuration.nix
-          ./hosts/desktop/hardware-configuration.nix
-        ];
+    let
+      system = "x86_64-linux";
+      pkgs = import nixpkgs { inherit system; };
+    in
+    {
+      nixosConfigurations = {
+        desktop = nixpkgs.lib.nixosSystem {
+          inherit system;
+          modules = [
+            ./hosts/desktop/configuration.nix
+            ./hosts/desktop/hardware-configuration.nix
+          ];
+        };
       };
-    };
 
-    homeConfigurations = {
-      "nicklas@desktop" = home-manager.lib.homeManagerConfiguration {
-        pkgs = pkgs;
-        modules = [
-          (import ./home/nicklas/home.nix)
-        ];
+      homeConfigurations = {
+        "nicklas@desktop" = home-manager.lib.homeManagerConfiguration {
+          pkgs = pkgs;
+          modules = [
+            (import ./home/nicklas/home.nix)
+          ];
+        };
       };
     };
-  };
 }

@@ -6,7 +6,8 @@
 
 {
   imports =
-    [ # Include the results of the hardware scan.
+    [
+      # Include the results of the hardware scan.
       ./hardware-configuration.nix
     ];
   boot.loader.grub.enable = true;
@@ -40,13 +41,13 @@
     variant = "";
   };
   console.keyMap = "sv-latin1";
-#  services.printing.enable = true;
+  #  services.printing.enable = true;
   services.printing = {
     enable = true;
     drivers = with pkgs; [
-      gutenprint   # generic drivers
-      cups-bjnp    # Canon network backend
-      hplip        # doesn’t hurt, covers some PCL printers
+      gutenprint # generic drivers
+      cups-bjnp # Canon network backend
+      hplip # doesn’t hurt, covers some PCL printers
     ];
   };
   hardware.pulseaudio.enable = false;
@@ -63,7 +64,7 @@
     hashedPassword = "$6$e6GlX5UE4LWJc151$gk3Lj/nGKkqRlBcXuT/eacIQ48EpvYsGlTd1dxcDCtkG0QQPzia2FbVCAHMmDkwies60r4O64MfR1ZpoOIM7e.";
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
-       firefox
+      firefox
     ];
   };
   # Enables printers
@@ -83,9 +84,9 @@
     tree
     vim
     vlc
-    wget	
+    wget
     xmobar
   ];
   services.openssh.enable = true;
-  system.stateVersion = "24.11"; # Did you read the comment?
+  system.stateVersion = "24.04";
 }
