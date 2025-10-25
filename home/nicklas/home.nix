@@ -5,6 +5,7 @@
       ../common/bash.nix
       ../common/git.nix
       ../common/xresources.nix
+      ../common/screen.nix
   ];
   home.username = "nicklas";
   home.homeDirectory = "/home/nicklas";
@@ -99,10 +100,6 @@
           set showtabline=1
           highlight link TabNum Special
       endif
-    '';
-    ".screenrc".text = ''
-          caption always # activates window caption
-      caption string '%{= wk}[ %{k}%H %{k}][%= %{= wk}%?%-Lw%?%{r}(%{r}%n*%f%t%?(%u)%?%{r})%{k}%?%+Lw%?%?%= %{k}][%{b} %d/%m %{k}%c %{k}]' # good looking window bar 
     '';
     ".xmonad/xmobarrc".text = ''
       Config { font = "-*-Fixed-Bold-R-Normal-*-13-*-*-*-*-*-*-*"
