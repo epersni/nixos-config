@@ -11,8 +11,7 @@
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs { inherit system; };
-    in
-    {
+    in {
       nixosConfigurations = {
         desktop = nixpkgs.lib.nixosSystem {
           inherit system;
@@ -26,9 +25,7 @@
       homeConfigurations = {
         "nicklas@desktop" = home-manager.lib.homeManagerConfiguration {
           pkgs = pkgs;
-          modules = [
-            (import ./home/nicklas/home.nix)
-          ];
+          modules = [ (import ./home/nicklas/home.nix) ];
         };
       };
     };

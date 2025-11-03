@@ -1,12 +1,12 @@
 { config, ... }:
 
 {
-  imports = [ 
-      ../common/bash.nix
-      ../common/vim.nix
-      ../common/git.nix
-      ../common/xresources.nix
-      ../common/screen.nix
+  imports = [
+    ../common/bash.nix
+    ../common/vim.nix
+    ../common/git.nix
+    ../common/xresources.nix
+    ../common/screen.nix
   ];
   home.username = "nicklas";
   home.homeDirectory = "/home/nicklas";
@@ -50,7 +50,7 @@
       import XMonad.Hooks.ManageDocks
       import XMonad.Hooks.DynamicLog
       import System.IO(hPutStrLn)
-    
+
       main = do
         xmproc <- spawnPipe "xmobar ~/.xmonad/xmobarrc"
         xmonad defaultConfig

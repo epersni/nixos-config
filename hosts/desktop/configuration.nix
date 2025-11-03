@@ -5,11 +5,10 @@
 { config, pkgs, ... }:
 
 {
-  imports =
-    [
-      # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-    ];
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+  ];
   boot.loader.grub.enable = true;
   boot.loader.grub.device = "/dev/sda";
   boot.loader.grub.useOSProber = true;
@@ -61,11 +60,10 @@
   users.users.nicklas = {
     isNormalUser = true;
     description = "nicklas";
-    hashedPassword = "$6$e6GlX5UE4LWJc151$gk3Lj/nGKkqRlBcXuT/eacIQ48EpvYsGlTd1dxcDCtkG0QQPzia2FbVCAHMmDkwies60r4O64MfR1ZpoOIM7e.";
+    hashedPassword =
+      "$6$e6GlX5UE4LWJc151$gk3Lj/nGKkqRlBcXuT/eacIQ48EpvYsGlTd1dxcDCtkG0QQPzia2FbVCAHMmDkwies60r4O64MfR1ZpoOIM7e.";
     extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [
-      firefox
-    ];
+    packages = with pkgs; [ firefox ];
   };
   # Enables printers
   services.avahi = {
